@@ -2,10 +2,7 @@ package com.teamtreehouse.core;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -13,6 +10,8 @@ public abstract class BaseEntity {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     private final Long id;
+    @Version
+    private Long version;
 
     protected BaseEntity() {
         id = null;
